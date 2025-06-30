@@ -115,29 +115,6 @@ export default function HelpPage() {
           </CardContent>
         </Card>
 
-        {/* Quick Links */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {quickLinks.map((link, index) => {
-            const Icon = link.icon
-            return (
-              <Card key={index} className="hover:shadow-lg transition-all duration-200 cursor-pointer border-0">
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-3">
-                    <div className={`p-3 rounded-lg ${link.bgColor}`}>
-                      <Icon className={`h-6 w-6 ${link.color}`} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold">{link.title}</h3>
-                      <p className="text-sm text-muted-foreground">{link.description}</p>
-                    </div>
-                    <ExternalLink className="h-4 w-4 text-muted-foreground" />
-                  </div>
-                </CardContent>
-              </Card>
-            )
-          })}
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* FAQ Section */}
           <Card className="shadow-lg border-0">
@@ -239,43 +216,6 @@ export default function HelpPage() {
             </CardContent>
           </Card>
         </div>
-
-        {/* System Status */}
-        <Card className="shadow-lg border-0">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <AlertCircle className="h-5 w-5" />
-              System Status
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 bg-green-50 dark:bg-green-950 rounded-lg border border-green-200 dark:border-green-800">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
-                  <span className="font-medium text-green-800 dark:text-green-200">All Systems Operational</span>
-                </div>
-                <p className="text-sm text-green-600 dark:text-green-300 mt-1">Last updated: 2 minutes ago</p>
-              </div>
-              
-              <div className="p-4 bg-blue-50 dark:bg-blue-950 rounded-lg border border-blue-200 dark:border-blue-800">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-blue-600" />
-                  <span className="font-medium text-blue-800 dark:text-blue-200">Database</span>
-                </div>
-                <p className="text-sm text-blue-600 dark:text-blue-300 mt-1">Supabase: Online</p>
-              </div>
-              
-              <div className="p-4 bg-green-50 dark:bg-green-950 rounded-lg border border-green-200 dark:border-green-800">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
-                  <span className="font-medium text-green-800 dark:text-green-200">Realtime</span>
-                </div>
-                <p className="text-sm text-green-600 dark:text-green-300 mt-1">Live updates: Active</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </div>
   )

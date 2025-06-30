@@ -177,38 +177,6 @@ export default function SettingsPage() {
           </Card>
         </div>
 
-        {/* System Information */}
-        <Card className="shadow-lg border-0">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Database className="h-5 w-5" />
-              System Information
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                <p className="text-sm text-muted-foreground">Version</p>
-                <p className="font-semibold">1.0.0</p>
-              </div>
-              <div className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                <p className="text-sm text-muted-foreground">Database</p>
-                <p className="font-semibold">Supabase</p>
-              </div>
-              <div className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                <p className="text-sm text-muted-foreground">Framework</p>
-                <p className="font-semibold">Next.js 14</p>
-              </div>
-              <div className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
-                <p className="text-sm text-muted-foreground">Status</p>
-                <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                  Operational
-                </Badge>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
         {/* Action Buttons */}
         <div className="flex justify-end space-x-4">
           <Button variant="outline" className="flex items-center gap-2">
