@@ -164,7 +164,7 @@ export default function TransactionsPage() {
                   <SelectItem value="all">All Stations</SelectItem>
                   <SelectItem value="Inspection">Inspection</SelectItem>
                   <SelectItem value="Dyeing">Dyeing</SelectItem>
-                  <SelectItem value="FWH">FWH</SelectItem>
+                  <SelectItem value="FMH">FMH</SelectItem>
                   <SelectItem value="FMG">FMG</SelectItem>
                   <SelectItem value="Showroom Inward">Showroom Inward</SelectItem>
                 </SelectContent>

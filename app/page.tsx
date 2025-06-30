@@ -301,7 +301,7 @@ export default function Dashboard() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">
-                    {station.count.toLocaleString()} <span className="text-lg">sarees</span>
+                    {station.count.toLocaleString()} <span className="text-lg">saree(s)</span>
                   </div>
                   <Badge
                     variant="secondary"
