@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Separator } from "@/components/ui/separator"
 import { ArrowLeft, CheckCircle, Circle, Clock, Eye, Palette, Package, Store, Warehouse } from "lucide-react"
-import { supabase, type Saree } from "@/lib/supabase"
+import { supabase, type Saree, calculateStationDuration } from "@/lib/supabase"
 
 interface SareeStage {
   name: string
@@ -42,6 +42,7 @@ export default function SareeDetailPage() {
   const [sareeData, setSareeData] = useState<SareeProgress | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
+  const [stationDuration, setStationDuration] = useState("")
 
   useEffect(() => {
     const fetchSareeData = async () => {
@@ -65,6 +66,13 @@ export default function SareeDetailPage() {
           .order("timestamp", { ascending: true })
 
         if (transactionsError) throw transactionsError
+
+        // Calculate station duration
+        const latestTransaction = transactions?.find((t) => t.to_station === sareeDetails.current_station)
+        const duration = latestTransaction
+          ? calculateStationDuration(latestTransaction.timestamp)
+          : calculateStationDuration(sareeDetails.created_at)
+        setStationDuration(duration)
 
         // Build stages based on transactions
         const stages: SareeStage[] = STAGES.map((stageName) => {
@@ -215,14 +223,6 @@ export default function SareeDetailPage() {
                   <p className="text-sm text-muted-foreground font-medium">Weaver Name</p>
                   <p className="font-semibold">{sareeData.weaver_name}</p>
                 </div>
-                <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg border">
-                  <p className="text-sm text-muted-foreground font-medium">Color</p>
-                  <p className="font-semibold">{sareeData.color}</p>
-                </div>
-                <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded-lg border">
-                  <p className="text-sm text-muted-foreground font-medium">Design</p>
-                  <p className="font-semibold">{sareeData.design}</p>
-                </div>
               </div>
             </CardContent>
           </Card>
@@ -247,6 +247,7 @@ export default function SareeDetailPage() {
                 <div className="p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
                   <p className="text-sm text-green-700 dark:text-green-300 font-medium">Current Station</p>
                   <p className="font-bold text-lg text-green-900 dark:text-green-100">{sareeData.current_station}</p>
+                  <p className="text-xs text-green-600 dark:text-green-400 mt-1">Duration: {stationDuration}</p>
                 </div>
               </div>
             </CardContent>
